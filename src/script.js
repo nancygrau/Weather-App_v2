@@ -69,3 +69,19 @@ function getCurrentLocation(event) {
 }
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", getCurrentLocation);
+
+//Bonus
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature-unit");
+  temperatureElement.innerHTML = 55;
+}
+function convertToCelcius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature-unit");
+  temperatureElement.innerHTML = 13;
+}
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+let celciusLink = document.querySelector("#celsius");
+celciusLink.addEventListener("click", convertToCelcius);
