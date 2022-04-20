@@ -13,7 +13,7 @@ let searchButton = document.querySelector("#search-city-button");
 searchButton.addEventListener("click", handleClick);
 
 //Feature 1
-let h2 = document.querySelector("h2");
+let h2 = document.querySelector("#dateTime");
 let now = new Date();
 let days = [
   "Sunday",
