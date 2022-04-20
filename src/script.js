@@ -56,6 +56,10 @@ function showCityTemperature(response) {
   city.innerHTML = response.data.name;
   let conditionElement = document.querySelector("#condition-description");
   conditionElement.innerHTML = response.data.weather[0].description;
+  let sunriseElement = document.querySelector("#sunrise");
+  sunriseElement.innerHTML = response.data.sys.sunrise;
+  let sunsetElement = document.querySelector("#sunset");
+  sunsetElement.innerHTML = response.data.sys.sunset;
 }
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";
