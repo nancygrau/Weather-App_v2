@@ -54,6 +54,8 @@ function showCityTemperature(response) {
   temperatureElement.innerHTML = temperature;
   let city = document.querySelector("#cityName");
   city.innerHTML = response.data.name;
+  let conditionElement = document.querySelector("#condition-description");
+  conditionElement.innerHTML = response.data.weather[0].description;
 }
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";
