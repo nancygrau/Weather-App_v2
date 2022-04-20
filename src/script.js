@@ -1,5 +1,3 @@
-//Feature 2
-
 function handleClick(event) {
   let searchInput = document.querySelector("#search-text-input").value;
   let unit = "metric";
@@ -12,7 +10,6 @@ function handleClick(event) {
 let searchButton = document.querySelector("#search-city-button");
 searchButton.addEventListener("click", handleClick);
 
-//Week 5
 function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-text-input").value;
