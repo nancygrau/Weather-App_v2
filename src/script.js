@@ -54,6 +54,11 @@ function showCityTemperature(response) {
   let city = document.querySelector("#cityName");
   city.innerHTML = response.data.name;
 }
+let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
+let unit = "metric";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Zurich&appid=${apiKey}&units=${unit}`;
+axios.get(apiUrl).then(showCityTemperature);
+
 function getLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
