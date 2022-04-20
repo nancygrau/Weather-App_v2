@@ -48,6 +48,7 @@ let cityForm = document.querySelector("#search-city");
 cityForm.addEventListener("submit", searchCity);
 
 function showCityTemperature(response) {
+  console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature-unit");
   temperatureElement.innerHTML = temperature;
