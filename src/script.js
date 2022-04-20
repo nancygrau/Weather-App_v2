@@ -12,7 +12,6 @@ function handleClick(event) {
 let searchButton = document.querySelector("#search-city-button");
 searchButton.addEventListener("click", handleClick);
 
-h2.innerHTML = `${day} ${hour}:${minutes}`;
 //Week 5
 function searchCity(event) {
   event.preventDefault();
