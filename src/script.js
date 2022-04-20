@@ -12,28 +12,6 @@ function handleClick(event) {
 let searchButton = document.querySelector("#search-city-button");
 searchButton.addEventListener("click", handleClick);
 
-//Feature 1
-let h2 = document.querySelector("#dateTime");
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
 h2.innerHTML = `${day} ${hour}:${minutes}`;
 //Week 5
 function searchCity(event) {
@@ -47,19 +25,29 @@ function searchCity(event) {
 let cityForm = document.querySelector("#search-city");
 cityForm.addEventListener("submit", searchCity);
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let day = date.getDay();
+  return `${day} ${hours}:${minutes}`;
+}
+
 function showCityTemperature(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature-unit");
-  temperatureElement.innerHTML = temperature;
   let city = document.querySelector("#cityName");
-  city.innerHTML = response.data.name;
   let conditionElement = document.querySelector("#condition-description");
-  conditionElement.innerHTML = response.data.weather[0].description;
   let sunriseElement = document.querySelector("#sunrise");
-  sunriseElement.innerHTML = response.data.sys.sunrise;
   let sunsetElement = document.querySelector("#sunset");
+  let dateElement = document.querySelector("#dateTime");
+  temperatureElement.innerHTML = temperature;
+  city.innerHTML = response.data.name;
+  conditionElement.innerHTML = response.data.weather[0].description;
+  sunriseElement.innerHTML = response.data.sys.sunrise;
   sunsetElement.innerHTML = response.data.sys.sunset;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";
