@@ -51,7 +51,7 @@ function showCityTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature-unit");
   temperatureElement.innerHTML = temperature;
-  let city = document.querySelector("h1");
+  let city = document.querySelector("#cityName");
   city.innerHTML = response.data.name;
 }
 function getLocation(position) {
