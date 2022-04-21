@@ -1,3 +1,33 @@
+function searchParis(event) {
+  let unit = "metric";
+  let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=paris&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showCityTemperature);
+}
+
+let parisButton = document.querySelector("#paris");
+parisButton.addEventListener("click", searchParis);
+
+function searchAtlanta(event) {
+  let unit = "metric";
+  let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=atlanta&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showCityTemperature);
+}
+
+let atlantaButton = document.querySelector("#atlanta");
+atlantaButton.addEventListener("click", searchAtlanta);
+
+function searchTokyo(event) {
+  let unit = "metric";
+  let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showCityTemperature);
+}
+
+let tokyoButton = document.querySelector("#tokyo");
+tokyoButton.addEventListener("click", searchTokyo);
+
 function handleClick(event) {
   let searchInput = document.querySelector("#search-text-input").value;
   let unit = "metric";
@@ -74,6 +104,7 @@ function showCityTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";
