@@ -4,8 +4,6 @@ function handleClick(event) {
   let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showCityTemperature);
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = searchInput.value;
 }
 let searchButton = document.querySelector("#search-city-button");
 searchButton.addEventListener("click", handleClick);
@@ -65,12 +63,17 @@ function showCityTemperature(response) {
   let sunriseElement = document.querySelector("#sunrise");
   let sunsetElement = document.querySelector("#sunset");
   let dateElement = document.querySelector("#dateTime");
+  let iconElement = document.querySelector("#icon");
   temperatureElement.innerHTML = temperature;
   city.innerHTML = response.data.name;
   conditionElement.innerHTML = response.data.weather[0].description;
   sunriseElement.innerHTML = formatTime(response.data.sys.sunrise * 1000);
   sunsetElement.innerHTML = formatTime(response.data.sys.sunset * 1000);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";
