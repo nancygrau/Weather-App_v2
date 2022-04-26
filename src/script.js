@@ -84,7 +84,8 @@ function formatTime(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector(
     "#weather-forecast-temperatures"
   );
@@ -117,6 +118,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 function showCityTemperature(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
@@ -141,8 +148,10 @@ function showCityTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   windElement.innerHTML = response.data.wind.speed;
-  displayForecast();
+
+  getForecast(response.data.coord);
 }
+
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Zurich&appid=${apiKey}&units=${unit}`;
@@ -172,6 +181,7 @@ function convertToFahrenheit(event) {
   let temperatureElement = document.querySelector("#current-temperature-unit");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+
 function displayCelsiusTemp(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
