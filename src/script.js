@@ -119,10 +119,10 @@ function displayForecast(response) {
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">High ${Math.round(
                       forecastDay.temp.max
-                    )}</li>
+                    )}°</li>
                     <li class="list-group-item">Low ${Math.round(
                       forecastDay.temp.min
-                    )}</li>
+                    )}°</li>
                     <li class="list-group-item">${
                       forecastDay.weather[0].description
                     }</li>
@@ -189,27 +189,3 @@ function getCurrentLocation(event) {
 }
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", getCurrentLocation);
-
-//Bonus
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#current-temperature-unit");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#current-temperature-unit");
-  temperatureElement.innerHTML = Math.round(celciusTemperature);
-}
-
-let celciusTemperature = null;
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
