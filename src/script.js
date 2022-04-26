@@ -84,6 +84,39 @@ function formatTime(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector(
+    "#weather-forecast-temperatures"
+  );
+
+  let days = ["Tues", "Wed", "Thurs", "Fri"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">${day}</h5>
+                    <img
+                      src="http://openweathermap.org/img/wn/01d@2x.png"
+                      width="60"
+                    />
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">High 15°C</li>
+                    <li class="list-group-item">Low 1°C</li>
+                    <li class="list-group-item">Sunny</li>
+                  </ul>
+                </div>
+              </div>
+              `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showCityTemperature(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
@@ -108,6 +141,7 @@ function showCityTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   windElement.innerHTML = response.data.wind.speed;
+  displayForecast();
 }
 let apiKey = "8ee746d18f9f9f4609efcf4a58ee9252";
 let unit = "metric";

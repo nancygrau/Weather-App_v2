@@ -13,6 +13,14 @@ h2 {
   font-style: italic;
 }
 
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+.list-group-item {
+  color: #70757a;
+}
+
 .weather {
   width: 400px;
   display: block;
