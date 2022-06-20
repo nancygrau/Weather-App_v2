@@ -59,12 +59,7 @@ h2 {
   text-decoration: underline;
   margin-left: 5px;
 }
-.sunrise {
-  text-align: center;
-  font-size: 14px;
-  color: #70757a;
-}
-.sunset {
+.humidity {
   text-align: center;
   font-size: 14px;
   color: #70757a;
